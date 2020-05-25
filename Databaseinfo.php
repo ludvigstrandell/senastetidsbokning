@@ -77,7 +77,7 @@ function LoginAccount()
         $_SESSION['user_id'] = $ID;
         $_SESSION['email'] = $LoginEmail;
         $_SESSION['username'] = $LoginUsername;
-        header('Location: Mainpage.html');
+        header('Location: Mainpage.php');
     }
     else
     {
@@ -105,17 +105,14 @@ function emailExists($Email)
     include 'db.php';
     $statement = $db->prepare("SELECT Email FROM User WHERE Email = :Email");
     $statement->bindParam(':Email', $Email);
-    $result = $statement->execute();
-    $rows = 0;
-    while($row = $result->fetchArray()) 
-    {
-        $rows += 1;
-    }
-    if($rows >= 1) 
+    $statement->execute();
+    $found = $statement->fetchColumn();
+    
+    if( $found ) 
     {
         return true;
     } 
-    else
+    else 
     {
         return false;
     }
@@ -126,17 +123,14 @@ function usernameExists($Username)
     include 'db.php';
     $statement = $db->prepare("SELECT Username FROM User WHERE Username = :Username");
     $statement->bindParam(':Username', $Username);
-    $result = $statement->execute();
-    $rows = 0;
-    while($row = $result->fetchArray()) 
-    {
-        $rows += 1;
-    }
-    if($rows >= 1) 
+    $statement->execute();
+    $found = $statement->fetchColumn();
+    
+    if( $found ) 
     {
         return true;
     } 
-    else
+    else 
     {
         return false;
     }

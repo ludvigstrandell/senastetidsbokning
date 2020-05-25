@@ -1,3 +1,15 @@
+<?php 
+include 'Databaseinfo.php';
+session_start();
+if ( isset( $_SESSION['user_id'] ) ) 
+{
+	
+} 
+else 
+{
+    header("Location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +28,7 @@
         <div class="topnav">
             <a class="home" href="#home">Home</a>
             <a href="#profile">Profile</a>
-            <a href="#login">Log in</a>
+            <a href="Logout.php">Log Out</a>
           </div>
           <div class="row">
 
