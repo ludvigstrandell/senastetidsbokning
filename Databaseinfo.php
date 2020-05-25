@@ -12,7 +12,7 @@ if (isset($_POST["btnLoginAccount"]))
 
 function CreateAccount()
 {
-    require("Database.php");
+    require("db.php");
         $Username = test_input($_POST['username']);
         $Email = test_input($_POST['email']);
         $Password = $_POST['password'];
@@ -58,15 +58,15 @@ function CreateAccount()
 function LoginAccount()
 {
     session_start();
-    include 'Database.php';
+    include 'db.php';
     global $SuccesVar;
     $LoginUsername = $_POST['uid'];
     $LoginPassword = $_POST['pwd'];
 
     $statement = $db->prepare('SELECT * FROM User WHERE Username = :LoginUsername;');
     $statement->bindParam(':LoginUsername', $LoginUsername);
-    $result = $statement->execute();
-    $user = $result->fetchArray() ;
+    $statement->execute();
+    $user = $statement->fetch();
     $pass = $user['Password'];
     $LoginEmail = $user['Email'];
     $ID = $user['User_id'];
@@ -102,7 +102,7 @@ function test_input($data)
 
 function emailExists($Email) 
 {
-    include 'Database.php';
+    include 'db.php';
     $statement = $db->prepare("SELECT Email FROM User WHERE Email = :Email");
     $statement->bindParam(':Email', $Email);
     $result = $statement->execute();
@@ -123,7 +123,7 @@ function emailExists($Email)
 
 function usernameExists($Username) 
 {
-    include 'Database.php';
+    include 'db.php';
     $statement = $db->prepare("SELECT Username FROM User WHERE Username = :Username");
     $statement->bindParam(':Username', $Username);
     $result = $statement->execute();

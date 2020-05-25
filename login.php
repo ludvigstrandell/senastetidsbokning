@@ -3,7 +3,7 @@
     <head>
         <title>Login Shoebox</title>
         <link rel="stylesheet" href="loginstyle.css?v=1.1">
-        <?php include 'Database.php';
+        <?php include 'db.php';
         include 'Databaseinfo.php';
         session_start();
         ?>
