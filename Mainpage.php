@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TAKTERASSEN</title>
     <link rel="stylesheet" type="text/css" href="mainpagestyle.css">
+    <link href="calendar.css" type="text/css" rel="stylesheet"/>
     <script type="text/javascript" src="MainPage.js"></script>
 </head>
 <body>
@@ -21,7 +22,29 @@
 
             
               <div class="col-lg-6">
-    
+                  <?php
+              include 'Calendar.php';
+include 'Booking.php';
+include 'BookableCell.php';
+ 
+ 
+$booking = new Booking(
+    'tutorial',
+    'localhost',
+    'root',
+    ''
+);
+ 
+$bookableCell = new BookableCell($booking);
+ 
+$calendar = new Calendar();
+ 
+$calendar->attachObserver('showCell', $bookableCell);
+ 
+$bookableCell->routeActions();
+ 
+echo $calendar->show();
+?>
 
               </div>
 
