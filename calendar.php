@@ -3,15 +3,12 @@
 class Calendar
 {
  
-    /**
-     * Constructor
-     */
+    
     public function __construct()
     {
         $this->naviHref = htmlentities($_SERVER['PHP_SELF']);
     }
  
-    /********************* PROPERTY ********************/
     public $cellContent = '';
     protected $observers = array();
  
@@ -23,21 +20,12 @@ class Calendar
     private $daysInMonth = 0;
     private $sundayFirst = true;
     private $naviHref = null;
- 
-    /********************* PUBLIC **********************/
-    /* @return void
-     * @access public
-     */
+
     public function attachObserver($type, $observer)
     {
         $this->observers[$type][] = $observer;
     }
  
-    /*
-    *
-    * @return void
-    * @access public
-    */
     public function notifyObserver($type)
     {
         if (isset($this->observers[$type])) {
@@ -51,32 +39,13 @@ class Calendar
     {
         return $this->currentDate;
     }
- 
-    /**
-     * Set week labels' order.
-     * When it is set to false,
-     * monday will be listed as the first day.
-     *
-     * @param boolean
-     * @return              void
-     * @author              The-Di-Lab <thedilab@gmail.com>
-     * @access              public
-     */
+
     public function setSundayFirst($bool = true)
     {
         $this->sundayFirst = $bool;
     }
  
-    /**
-     * print out the calendar
-     *
-     * @param string
-     * @param string
-     * @param array
-     * @return              string
-     * @author              The-Di-Lab <thedilab@gmail.com>
-     * @access              public
-     */
+
     public function show($month = null, $year = null, $attributes = false)
     {
         if (null == $year && isset($_GET['year'])) {
@@ -114,21 +83,11 @@ class Calendar
         $content .= '</div>';
         return $content;
     }
- 
-    /********************* PRIVATE **********************/
-    /**
-     * create the li element for ul
-     *
-     * @param string
-     * @param array
-     * @return              string
-     * @author              The-Di-Lab <thedilab@gmail.com>
-     * @access              private
-     */
+
     private function _showDay($cellNumber, $attributes = false)
     {
         if ($this->currentDay == 0) {
-            //1 (for Monday) through 7 (for Sunday)
+
             $firstDayOfTheWeek = date('N', strtotime($this->currentYear . '-' . $this->currentMonth . '-01'));
             if ($this->sundayFirst) {
                 if ($firstDayOfTheWeek == 7) {
@@ -156,13 +115,7 @@ class Calendar
             ($cellContent == null ? 'mask' : '') . '">' . $cellContent . '</li>';
     }
  
-    /**
-     * create navigation
-     *
-     * @return              string
-     * @author              The-Di-Lab <thedilab@gmail.com>
-     * @access              private
-     */
+
     private function _createNavi()
     {
         $nextMonth = $this->currentMonth == 12 ? 1 : intval($this->currentMonth) + 1;
@@ -179,13 +132,7 @@ class Calendar
             '</div>';
     }
  
-    /**
-     * create calendar week labels
-     *
-     * @return              string
-     * @author              The-Di-Lab <thedilab@gmail.com>
-     * @access              private
-     */
+
     private function _createLabels()
     {
         if ($this->sundayFirst) {
@@ -207,35 +154,20 @@ class Calendar
         return $content;
     }
  
-    /**
-     * create content for li element
-     *
-     * @param array
-     * @return              string
-     * @author              The-Di-Lab <thedilab@gmail.com>
-     * @access              private
-     */
+    
     private function _createCellContent($setting = false)
     {
         $this->cellContent = '';
  
         $this->cellContent = $this->currentDay;
  
-        //observer
+
         $this->notifyObserver('showCell');
  
         return $this->cellContent;
     }
  
-    /**
-     * calculate number of weeks in a particular month
-     *
-     * @param number
-     * @param number
-     * @return              number
-     * @author              The-Di-Lab <thedilab@gmail.com>
-     * @access              private
-     */
+    
     private function _weeksInMonth($month = null, $year = null)
     {
         if (null == ($year))
@@ -244,7 +176,7 @@ class Calendar
         if (null == ($month))
             $month = date("m", time());
  
-        // find number of weeks in this month
+ 
         $daysInMonths = $this->_daysInMonth($month, $year);
  
         $numOfweeks = ($daysInMonths % 7 == 0 ? 0 : 1) + intval($daysInMonths / 7);
@@ -260,15 +192,7 @@ class Calendar
  
     }
  
-    /**
-     * calculate number of days in a particular month
-     *
-     * @param number
-     * @param number
-     * @return              number
-     * @author              The-Di-Lab <thedilab@gmail.com>
-     * @access              private
-     */
+
     private function _daysInMonth($month = null, $year = null)
     {
         if (null == ($year))
