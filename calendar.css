@@ -14,7 +14,7 @@ div#calendar div.box {
     left: 0px;
     width: 100%;
     height: 40px;
-    background-color: #3FA7D6;
+    background-color:black;
 }
  
 div#calendar div.header {
@@ -52,10 +52,7 @@ div#calendar div.header a.next {
 }
  
 /*******************************Calendar Content Cells*********************************/
-div#calendar div.box-content {
-    border: 1px solid #3FA7D6;
-    border-top: none;
-}
+
  
 div#calendar ul.label {
     float: left;
@@ -102,7 +99,7 @@ div#calendar ul.dates li {
     width: 80px;
     height: 80px;
     font-size: 25px;
-    background-color: #FFF;
+    background-color:black;
     color: #000;
     text-align: center;
     position: relative;
@@ -157,7 +154,7 @@ div.booked {
     border:1px solid #dcdcdc;
     display:inline-block;
     cursor:pointer;
-    color:#666666;
+    color:black;
     font-size:10px;
     font-weight:bold;
     padding:3px 12px;
