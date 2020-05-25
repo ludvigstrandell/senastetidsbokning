@@ -1,3 +1,3 @@
 <?php
-$db = new PDO ('sqlite:C:\Database\Takterassen.db')
+$db = new PDO ('sqlite:Database\Takterassen.db');
 ?>
