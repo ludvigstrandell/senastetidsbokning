@@ -63,18 +63,21 @@ class Calendar
         $this->currentYear = $year;
         $this->currentMonth = $month;
         $this->daysInMonth = $this->_daysInMonth($month, $year);
- 
+        $date = $_POST['date'];
+
         $content = '<div id="calendar">' .
             '<div class="box">' .
             $this->_createNavi() .
             '</div>' .
             '<div class="box-content">' .
             '<ul class="label">' . $this->_createLabels() . '</ul>';
+
         $content .= '<div class="clear"></div>';
         $content .= '<ul class="dates">';
         for ($i = 0; $i < $this->_weeksInMonth($month, $year); $i++) {
             for ($j = 1; $j <= 7; $j++) {
                 $content .= $this->_showDay($i * 7 + $j, $attributes);
+
             }
         }
         $content .= '</ul>';
@@ -113,6 +116,8 @@ class Calendar
  
         return '<li id="li-' . $this->currentDate . '" class="' . ($cellNumber % 7 == 1 ? ' start ' : ($cellNumber % 7 == 0 ? ' end ' : ' ')) .
             ($cellContent == null ? 'mask' : '') . '">' . $cellContent . '</li>';
+            echo "$date";
+
     }
  
 
