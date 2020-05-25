@@ -1,5 +1,4 @@
 <?php
- 
 class Booking
 {
  
@@ -30,17 +29,16 @@ class Booking
 
 public function add(DateTimeImmutable $bookingDate)
 {
-    $statement = $this->dbh->prepare(
-        'INSERT INTO ' . $this->bookingsTableName . ' (booking_date) VALUES (:bookingDate)'
-    );
- 
+    include 'db.php';
+        'INSERT INTO ' . $this->bookingsTableName . ' (booking_date) VALUES (:bookingDate) '
+;
+
     if (false === $statement) {
         throw new Exception('Invalid prepare statement');
     }
  
-    if (false === $statement->execute([
-            ':bookingDate' => $bookingDate->format('Y-m-d'),
-        ])) {
+    if (false === $statement->execute([':bookingDate' => $bookingDate->format('Y-m-d'),)) 
+    {
         throw new Exception(implode(' ', $statement->errorInfo()));
     }
 }
