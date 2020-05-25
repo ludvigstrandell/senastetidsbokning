@@ -3,17 +3,11 @@
  
 class BookableCell
 {
-    /**
-     * @var Booking
-     */
+
     private $booking;
  
     private $currentURL;
  
-    /**
-     * BookableCell constructor.
-     * @param $booking
-     */
     public function __construct(Booking $booking)
     {
         $this->booking = $booking;

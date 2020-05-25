@@ -35,16 +35,14 @@ else
             
               <div class="col-lg-6">
                   <?php
-              include 'Calendar.php';
+
+include 'Calendar.php';
 include 'Booking.php';
 include 'BookableCell.php';
  
  
 $booking = new Booking(
-    'tutorial',
-    'localhost',
-    'root',
-    ''
+
 );
  
 $bookableCell = new BookableCell($booking);

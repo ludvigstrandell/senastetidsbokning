@@ -6,13 +6,6 @@ class Booking
  
     private $bookingsTableName = 'bookings';
  
-    /**
-     * Booking constructor.
-     * @param string $database
-     * @param string $host
-     * @param string $databaseUsername
-     * @param string $databaseUserPassword
-     */
     public function __construct()
     {
     
@@ -29,16 +22,19 @@ class Booking
 
 public function add(DateTimeImmutable $bookingDate)
 {
-    include 'db.php';
-        'INSERT INTO ' . $this->bookingsTableName . ' (booking_date) VALUES (:bookingDate) '
-;
-
+    $userid = $_SESSION['user_id'];
+    $statement = $this->dbh->prepare(
+        'INSERT INTO ' . $this->bookingsTableName . ' (booking_date, User_id) VALUES (:bookingDate, :userid)'
+    );
+ 
     if (false === $statement) {
         throw new Exception('Invalid prepare statement');
     }
  
-    if (false === $statement->execute([':bookingDate' => $bookingDate->format('Y-m-d'),)) 
-    {
+    if (false === $statement->execute([
+            ':bookingDate' => $bookingDate->format('Y-m-d'),
+            ':userid' => $userid
+        ])) {
         throw new Exception(implode(' ', $statement->errorInfo()));
     }
 }
