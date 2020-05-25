@@ -60,7 +60,7 @@ body
     width: 1200px;
     position: static;
     z-index: auto;
-    background-color: lightgrey;
+    background-color: #E0FFFF;
     }
 
 
@@ -98,5 +98,6 @@ h2{
 
     color: white;
 }
+
 
 
