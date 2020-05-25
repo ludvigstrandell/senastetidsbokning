@@ -1,59 +1,51 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Login Shoebox</title>
+        <title>Login Takterassen</title>
         <link rel="stylesheet" href="loginstyle.css?v=1.1">
         <?php include 'db.php';
         include 'Databaseinfo.php';
         session_start();
         ?>
-        
     </head>
     <body>
-        <script>
-            function addCreateUserForm()
-            {
-                document.getElementById('LoginForm').style.display = 'none';
-                document.getElementById('CreateUserForm').style.display = 'block';
-            }
-            function addLoginForm()
-            {
-                document.getElementById('CreateUserForm').style.display = 'none';
-                document.getElementById('LoginForm').style.display = 'block';
-            }
-        </script>
-        <div class="hero">
+        <div class="header">
+            <h1>TAKTERASSEN</h1>
+        </div>
+        <div class="background">
             <div class="form-box">
                 <div class="button-box">
                     <div id="btn"></div>
-                    <button type="button" onclick="addLoginForm();" class="toggle-btn">Log In</button>
-                    <button type="button" onclick="addCreateUserForm();" class="toggle-btn">Register</button>
+                    <button type="button" class="toggle-btn" onclick="login()">Log In</button>
+                    <button type="button" class="toggle-btn" onclick="register()">Register</button>
                 </div>
-                <form id="CreateUserForm" class="formclass" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-                    <h4>E-Mail : </h4>
-                    <input class="inp" type="text" placeholder="Enter E-mail" name="email" required>  <br />
-                    <h4>Username : </h4>
-                    <input class="inp" type="text" placeholder="Enter Username" name="username" required>  <br />
-                    <h4>Password : </h4>
-                    <input class="inp" type="password" placeholder="Enter Password" name="password" required>  <br />
-                    <input type ="submit" name ="btnCreateAccount" value="Create Your User"> <br />
-                    <span class="error" style="color: red"> <?php echo $formError;?></span> <br />
-                    <span class="error" style="color: red"> <?php echo $emailError;?></span> <br />
-                    <span class="error" style="color: red"> <?php echo $duplEmail;?></span> <br />
-                    <span class="error" style="color: red"> <?php echo $duplUsername;?></span> <br />
-                    <span class="success" style="color: green"> <?php echo $formSucces;?></span> <br />
-                </form>
-                
-
                 <form id="LoginForm" class="formclass" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-                    <h4>Username : </h4>
-                    <input class="inp" type="text" placeholder="Enter Username" name="uid" required>  <br />
-                    <h4>Password : </h4>
-                    <input class="inp" type="password" placeholder="Enter Password" name="pwd" required>  <br />
-                    <input type ="submit" name ="btnLoginAccount" value="Login"> <br />
-                    <span class="success" style="color: green"> <?php echo $SuccesVar;?></span> <br />
+                    <input type="text" class="input-field" placeholder="Enter Username" name="uid" required>
+                    <input type="password" class="input-field" placeholder="Enter Password"  name="pwd" required>
+                    <input type="submit" class="submit-btn" name ="btnLoginAccount" value="Login"></input>
+                </form>
+                <form id="CreateUserForm" class="formclass" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                    <input type="text" placeholder="Enter E-mail" name="email" class="input-field" required>
+                    <input type="text" placeholder="Enter Username" name="username" class="input-field" required>
+                    <input type="password" placeholder="Enter Password" name="password" class="input-field" required>
+                    <input type="submit" class="submit-btn" name ="btnCreateAccount" value="Create Account"></input>
                 </form>
             </div>
         </div>
+        <script>
+            var x = document.getElementById("LoginForm");
+            var y = document.getElementById("CreateUserForm");
+            var z = document.getElementById("btn");
+            function register(){
+                x.style.left ="-400px";
+                y.style.left ="50px";
+                z.style.left ="110px";
+            }
+            function login(){
+                x.style.left ="50px";
+                y.style.left ="450px";
+                z.style.left ="0";
+            }
+        </script>
     </body>
 </html>
