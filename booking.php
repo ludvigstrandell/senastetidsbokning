@@ -7,13 +7,6 @@ class Booking
  
     private $bookingsTableName = 'bookings';
  
-    /**
-     * Booking constructor.
-     * @param string $database
-     * @param string $host
-     * @param string $databaseUsername
-     * @param string $databaseUserPassword
-     */
     public function __construct()
     {
     

@@ -4,16 +4,17 @@
 </head>
 <body>
 <?php
+
 include 'Calendar.php';
 include 'Booking.php';
 include 'BookableCell.php';
  
  
 $booking = new Booking(
-    'tutorial',
-    'localhost',
-    'root',
-    ''
+    // 'tutorial',
+    // 'localhost',
+    // 'root',
+    // ''
 );
  
 $bookableCell = new BookableCell($booking);
