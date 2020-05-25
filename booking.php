@@ -14,25 +14,18 @@ class Booking
      * @param string $databaseUsername
      * @param string $databaseUserPassword
      */
-    public function __construct($database, $host, $databaseUsername, $databaseUserPassword)
+    public function __construct()
     {
-        try {
- 
-            $this->dbh =
-                new PDO(sprintf('sqlite:Takterassen.db', $host, $database),
-                    $databaseUsername,
-                    $databaseUserPassword
-                );
- 
-        } catch (PDOException $e) {
-            die($e->getMessage());
-        }
+    
+            $this->dbh = new PDO ('sqlite:Database\Takterassen.db');
+
     }
 
     public function index()
 {
     $statement = $this->dbh->query('SELECT * FROM ' . $this->bookingsTableName);
     return $statement->fetchAll(PDO::FETCH_ASSOC);
+
 }
 
 public function add(DateTimeImmutable $bookingDate)
