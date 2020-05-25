@@ -50,8 +50,7 @@ div#calendar div.header a.prev {
 div#calendar div.header a.next {
     right: 0px;
 }
- 
-/*******************************Calendar Content Cells*********************************/
+
 
  
 div#calendar ul.label {
@@ -86,7 +85,7 @@ div#calendar ul.dates {
     margin-bottom: 5px;
 }
  
-/** overall width = width+padding-right**/
+
 div#calendar ul.dates li {
     margin: 0px;
     padding: 0px;
