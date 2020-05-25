@@ -34,21 +34,15 @@ else
 
             
               <div class="col-lg-6">
-<<<<<<< HEAD:Mainpage.html
-
-                <script>jQuery('#window').load('index1.php'); </script>
-=======
                   <?php
-              include 'Calendar.php';
+
+include 'Calendar.php';
 include 'Booking.php';
 include 'BookableCell.php';
  
  
 $booking = new Booking(
-    'tutorial',
-    'localhost',
-    'root',
-    ''
+
 );
  
 $bookableCell = new BookableCell($booking);
@@ -61,7 +55,6 @@ $bookableCell->routeActions();
  
 echo $calendar->show();
 ?>
->>>>>>> eaa1c509a8e7668c25c1fc1dbc8d9f05cd5265db:Mainpage.php
 
               </div>
 
