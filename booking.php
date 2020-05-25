@@ -42,14 +42,29 @@ public function add(DateTimeImmutable $bookingDate)
 
 public function delete($id)
 {
-    $statement = $this->dbh->prepare(
-        'DELETE from ' . $this->bookingsTableName . ' WHERE id = :id'
-    );
-    if (false === $statement) {
-        throw new Exception('Invalid prepare statement');
-    }
-    if (false === $statement->execute([':id' => $id])) {
-        throw new Exception(implode(' ', $statement->errorInfo()));
+    include 'db.php';
+    $userid = $_SESSION['user_id'];
+    $statement = $db->prepare("SELECT id FROM bookings WHERE User_id = :user_id");
+    $statement->bindParam(':user_id', $userid);
+    $statement->execute();
+    $found = $statement->fetchColumn();
+    if( $found ) 
+    {
+        $statement = $this->dbh->prepare(
+            'DELETE from ' . $this->bookingsTableName . ' WHERE id = :id '
+        );
+        if (false === $statement) {
+            throw new Exception('Invalid prepare statement');
+        }
+        if (false === $statement->execute([
+            ':id' => $id
+            ])) {
+            throw new Exception(implode(' ', $statement->errorInfo()));
+        }
+    } 
+    else 
+    {
+        
     }
 }
 
