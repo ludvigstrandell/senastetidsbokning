@@ -77,6 +77,7 @@ class Calendar
         for ($i = 0; $i < $this->_weeksInMonth($month, $year); $i++) {
             for ($j = 1; $j <= 7; $j++) {
                 $content .= $this->_showDay($i * 7 + $j, $attributes);
+                    
 
             }
         }
@@ -116,7 +117,6 @@ class Calendar
  
         return '<li id="li-' . $this->currentDate . '" class="' . ($cellNumber % 7 == 1 ? ' start ' : ($cellNumber % 7 == 0 ? ' end ' : ' ')) .
             ($cellContent == null ? 'mask' : '') . '">' . $cellContent . '</li>';
-            echo "$date";
 
     }
  
@@ -165,6 +165,7 @@ class Calendar
         $this->cellContent = '';
  
         $this->cellContent = $this->currentDay;
+       
  
 
         $this->notifyObserver('showCell');
