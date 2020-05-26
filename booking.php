@@ -1,7 +1,8 @@
 <?php
- 
+
 class Booking
 {
+    
  
     private $dbh;
  
@@ -25,7 +26,7 @@ public function add(DateTimeImmutable $bookingDate)
 {
     $userid = $_SESSION['user_id'];
     $statement = $this->dbh->prepare(
-        'INSERT INTO ' . $this->bookingsTableName . '(booking_date, User_id) VALUES (:bookingDate, :userid)'
+        'INSERT INTO ' . $this->bookingsTableName . ' (booking_date, User_id) VALUES (:bookingDate, :userid)'
     );
  
     if (false === $statement) {
