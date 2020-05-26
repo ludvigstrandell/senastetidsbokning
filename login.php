@@ -12,6 +12,11 @@
         <div class="header">
             <h1>TAKTERASSEN</h1>
         </div>
+        <div class="topnav">
+            <a class="home" href="#home">Home</a>
+            <a href="#profile">Profile</a>
+            <a href="Logout.php">Log Out</a>
+          </div>
         <div class="background">
             <div class="form-box">
                 <div class="button-box">
