@@ -60,21 +60,38 @@ class calendar
             $month = date("m", time());
         }
  
+<<<<<<< HEAD
         $this->currentYear = $year;
         $this->currentMonth = $month;
         $this->daysInMonth = $this->_daysInMonth($month, $year);
+=======
+<<<<<<< HEAD
+        $this->currentYear = $year;
+        $this->currentMonth = $month;
+        $this->daysInMonth = $this->_daysInMonth($month, $year);
+        $date = $_POST['date'];
+
+=======
+        $this->nuvarandeÅr = $year;
+        $this->nuvaradeMånad = $month;
+        $this->dagarIMånad = $this->_daysInMonth($month, $year);
+>>>>>>> d91a1e7de07768aa95cfe2b18131de03202c547e
  
+>>>>>>> 6940bc4f2be45abf95a7a3617ed4882205b2dc86
         $content = '<div id="calendar">' .
             '<div class="box">' .
             $this->_createNavi() .
             '</div>' .
             '<div class="box-content">' .
             '<ul class="label">' . $this->_createLabels() . '</ul>';
+
         $content .= '<div class="clear"></div>';
         $content .= '<ul class="dates">';
         for ($i = 0; $i < $this->_weeksInMonth($month, $year); $i++) {
             for ($j = 1; $j <= 7; $j++) {
                 $content .= $this->_showDay($i * 7 + $j, $attributes);
+                    
+
             }
         }
         $content .= '</ul>';
@@ -113,6 +130,7 @@ class calendar
  
         return '<li id="li-' . $this->currentDate . '" class="' . ($cellNumber % 7 == 1 ? ' start ' : ($cellNumber % 7 == 0 ? ' end ' : ' ')) .
             ($cellContent == null ? 'mask' : '') . '">' . $cellContent . '</li>';
+
     }
  
 
@@ -159,7 +177,16 @@ class calendar
     {
         $this->cellContent = '';
  
+<<<<<<< HEAD
         $this->cellContent = $this->currentDay;
+=======
+<<<<<<< HEAD
+        $this->cellContent = $this->currentDay;
+       
+=======
+        $this->cellContent = $this->nuvarandeDag;
+>>>>>>> 6940bc4f2be45abf95a7a3617ed4882205b2dc86
+>>>>>>> d91a1e7de07768aa95cfe2b18131de03202c547e
  
 
         $this->notifyObserver('showCell');
