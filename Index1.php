@@ -14,7 +14,7 @@ $booking = new Booking();
  
 $bookableCell = new BookableCell($booking);
  
-$calendar = new Calendar();
+$calendar = new calendar();
  
 $calendar->attachObserver('showCell', $bookableCell);
  
