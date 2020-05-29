@@ -11,6 +11,17 @@
     background-size: cover;
     position: absolute;
 }
+
+.topnav{
+    text-align: right;
+    padding-right: 70px;
+}
+ .topnav a{
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+ }
+
 .header{
     color:white;
     background-color: black;
@@ -97,4 +108,19 @@ span{
 }
 #CreateUserForm{
     left: 450px;
+}
+.a-fb{
+    text-decoration: none;
+}
+.fb-button-container{
+    padding:10px;
+    color:#fff;
+    border-radius:5px;
+    background:#3d6ad6;
+    
+}
+.fb-button-container:hover{
+    background:#1D3C78
+
+
 }
