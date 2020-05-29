@@ -40,12 +40,19 @@ class BookableCell
  
     private function openCell($date)
     {
-        return '<div class="open">' . $this->bookingForm($date) . '</div>';
+        return '<div class="open">  '. $date . '      ' . $this->bookingForm($date) . '</div>';
     }
  
     private function bookedCell($date)
     {
-        return '<div class="booked">' . $this->deleteForm($this->bookingId($date)) . '</div>';
+        include 'db.php';
+        $userid = $_SESSION['user_id'];
+
+        if ($this->UserId($date) === $userid) {return '<div class="bookedbyme">'. $date . ' ' . $this->deleteForm($this->bookingId($date)) . '</div>';}
+
+
+        else {return '<div class="booked">   '. $date . '       ' . $this->deleteForm($this->bookingId($date)) . '</div>';}
+        
     }
  
     private function isDateBooked($date)
@@ -69,6 +76,18 @@ class BookableCell
         $result = array_shift($booking);
  
         return $result['id'];
+    }
+
+    private function Userid($date)
+    {
+        
+        $booking = array_filter($this->booking->index(), function ($record) use ($date) {
+            return $record['booking_date'] == $date;
+        });
+
+        $result = array_shift($booking);
+ 
+        return $result['User_id'];
     }
  
     private function deleteBooking($id)

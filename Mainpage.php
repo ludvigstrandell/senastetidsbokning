@@ -34,6 +34,12 @@ else
 
             
               <div class="col-lg-6">
+              <div><div class='box green'></div> <p>= Available day</p></div>
+              
+<br>
+<div><div class='box red'></div> <p>= Booked by others</p></div>
+<br>
+<div><div class='box purple'></div><p>= Booked by me</p></div>
                   <?php
 
 include 'Calendar.php';
@@ -58,6 +64,7 @@ echo $calendar->show();
 
               </div>
 
+              
             
               </div>
              
